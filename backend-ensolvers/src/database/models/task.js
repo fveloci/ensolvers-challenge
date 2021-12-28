@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Task.belongsTo(models.Folder, {
-        as: 'folders', foreignKey: 'folderId'
+        as: 'folder', foreignKey: 'folderId'
       })
     }
   };

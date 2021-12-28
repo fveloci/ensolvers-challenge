@@ -8,4 +8,7 @@ const auth = require('../middlewares/auth')
 router.get('/', controller.listByUser);
 router.post('/', controller.createFolder);
 
+router.post('/:id/task', controller.createTask);
+router.get('/:id/task', controller.getTasks);
+
 module.exports = router;

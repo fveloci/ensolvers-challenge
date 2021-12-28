@@ -17,11 +17,11 @@ app.use(express.urlencoded({extended: 'false'}));
 // Routes
 const authRouter = require('./src/routes/authRouter')
 const folderRouter = require('./src/routes/folderRouter')
+const taskRouter = require('./src/routes/taskRouter');
 
 app.use(`${URL}/auth`, authRouter);
 app.use(`${URL}/folder`, auth, folderRouter);
-
-
+app.use(`${URL}/task`, auth, taskRouter);
 
 
 app.listen(PORT, () => {
