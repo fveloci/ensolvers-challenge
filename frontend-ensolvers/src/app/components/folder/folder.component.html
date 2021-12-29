@@ -1,1 +1,21 @@
-<p>folder works!</p>
+<div class="container">
+  <div class="title">
+    <h2 [routerLink]="['/list']">Folders ></h2><h2>{{folderName}}</h2>
+  </div>
+  <div>
+    <ul class="task-list">
+      <li class="task-item" *ngFor="let task of tasks; let i = index" >
+        <input class="task-check" type="checkbox" (change)="checkTask(task)"  [checked]="task.done">
+        <p class="task-name">{{task.name}}</p> <a class="option" [routerLink]="['/task', task.id]" [state]="{task: task}">Edit</a>
+      </li>
+    </ul>
+  </div>
+  <div class="task-add">
+    <form [formGroup]="addTask">
+      <div class="form-group">
+        <input formControlName="name" type="text" placeholder="New Task" id="name" name="name">
+      </div>
+      <button (click)="createNewTask(addTask.value)" [disabled]="addTask.invalid">Add</button>
+    </form>
+  </div>
+</div>

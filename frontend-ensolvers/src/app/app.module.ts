@@ -11,6 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "./interceptor/jwt.interceptor";
 import { FolderComponent } from './components/folder/folder.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FolderListItemComponent,
     LoginComponent,
     RegisterComponent,
-    FolderComponent
+    FolderComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

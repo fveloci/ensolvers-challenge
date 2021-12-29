@@ -1,0 +1,53 @@
+.container{
+  padding: 30px;
+  width: 100%;
+}
+.title{
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.title h2 {
+  margin: 0 5px;
+}
+.task-item {
+  width: 100%;
+  display: inline-flex;
+}
+.task-check {
+  vert-align: bottom;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+.task-check:checked:before {
+  background-color: yellow;
+}
+.task-item p {
+  margin-right: 20px;
+  width: 200px;
+  flex-wrap: wrap;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+}
+li {
+  margin: 5px 0;
+}
+.option {
+  margin: 0 10px;
+  align-items: end;
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+}
+form {
+  margin: 30px 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+form button {
+  margin: 0 10px;
+}
+

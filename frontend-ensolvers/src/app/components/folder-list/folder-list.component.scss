@@ -10,13 +10,17 @@ ul {
   padding: 0;
   margin: 5px 0;
 }
-
+li {
+  margin: 5px 0;
+}
 .folder-item {
   width: 100%;
   display: inline-flex;
 }
 .folder-item p {
   margin-right: 20px;
+  width: 200px;
+  flex-wrap: wrap;
 }
 .option {
   margin: 0 10px;

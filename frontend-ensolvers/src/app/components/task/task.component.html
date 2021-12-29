@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="title">
+    <h2>Editing Task "{{task.name}}"</h2>
+  </div>
+  <div class="edit-form">
+    <form [formGroup]="editTask">
+      <input type="text" formControlName="name" placeholder="{{task.name}}">
+      <div class="actions">
+        <button [disabled]="editTask.invalid || !editTask.touched" (click)="modifyTask(editTask.value)">Save</button><button [routerLink]="['/folder', task.folderId]">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

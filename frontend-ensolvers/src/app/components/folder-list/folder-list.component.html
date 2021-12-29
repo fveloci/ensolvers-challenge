@@ -5,7 +5,7 @@
   <div>
     <ul class="folder-list">
       <li class="folder-item" *ngFor="let folder of folders; let i = index" >
-        <p>- {{folder.name}}</p> <a class="option">View items</a> <a class="option" (click)="removeFolder(folder.id)">Remove</a>
+        <p class="folder-name">- {{folder.name}}</p> <a class="option" [routerLink]="['/folder', folder.id]">View items</a> <a class="option" (click)="removeFolder(folder.id)">Remove</a>
       </li>
     </ul>
   </div>
