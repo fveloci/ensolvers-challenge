@@ -23,4 +23,44 @@ For this exercise I used:
 
 Node and Angular are necessary to run each application. And in this case I use XAMMP to run MYSQL local host database.
 
-# Each app has their own README for their specific execution.
+## Angular
+
+### Prerequisites
+- Install Node.js which includes Node Package Manager
+
+### Setting up a Project
+- Install the Angular CLI globally:
+
+```
+npm install -g @angular/cli
+```
+- Install dependencies (run this command inside frontend project folder): 
+```
+npm install
+```
+
+- Run the application:
+```
+ng serve
+```
+
+## Express backend server
+If you follow Angular prerequisites you don´t need to install Node.
+
+- Install libraries and packages (run this command inside backend project folder):
+```
+npm install
+```
+- Create new database with the same database name you are going to have in .env file. Otherwise API is not going to connect.
+- Run:
+```
+npm sequelize-cli db:migrate
+```
+This command is going to run migrations and create database tables with their relations.
+
+- After this steps, we can run:
+```
+npm start
+```
+and check if application is running correctly.
+
