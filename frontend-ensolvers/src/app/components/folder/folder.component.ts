@@ -58,4 +58,13 @@ export class FolderComponent implements OnInit {
     })
   }
 
+  deleteTask(taskId: number) {
+    this.userService.deleteTask(taskId).subscribe(res => {
+      console.log(res);
+      this.getFolderTasks();
+    }, err => {
+      console.log(err)
+    })
+  }
+
 }

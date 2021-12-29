@@ -6,7 +6,7 @@
     <form [formGroup]="editTask">
       <input type="text" formControlName="name" placeholder="{{task.name}}">
       <div class="actions">
-        <button [disabled]="editTask.invalid || !editTask.touched" (click)="modifyTask(editTask.value)">Save</button><button [routerLink]="['/folder', task.folderId]">Cancel</button>
+        <button [disabled]="editTask.invalid || !editTask.touched" (click)="modifyTask(editTask.value)">Save</button><button (click)="navigateToFolder(task.folderId)">Cancel</button>
       </div>
     </form>
   </div>

@@ -34,7 +34,10 @@ export class UserService {
   getTask(taskId: any): Observable<any>{
     return this.http.get(environment.api_url+`/task/${taskId}`)
   }
-  modifyTask(task: any, taskId: any){
+  modifyTask(task: any, taskId: any): Observable<any>{
     return this.http.put(environment.api_url+`/task/${taskId}`, task);
+  }
+  deleteTask(id: number): Observable<any>{
+    return this.http.delete(environment.api_url+`/task/${id}`);
   }
 }

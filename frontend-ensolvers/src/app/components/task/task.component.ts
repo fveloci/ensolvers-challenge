@@ -50,4 +50,8 @@ export class TaskComponent implements OnInit {
     })
   }
 
+  navigateToFolder(folderId: any){
+    this.router.navigateByUrl(`/folder/${folderId}`)
+  }
+
 }

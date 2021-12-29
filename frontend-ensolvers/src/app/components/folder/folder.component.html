@@ -6,7 +6,7 @@
     <ul class="task-list">
       <li class="task-item" *ngFor="let task of tasks; let i = index" >
         <input class="task-check" type="checkbox" (change)="checkTask(task)"  [checked]="task.done">
-        <p class="task-name">{{task.name}}</p> <a class="option" [routerLink]="['/task', task.id]" [state]="{task: task}">Edit</a>
+        <p class="task-name">{{task.name}}</p> <a class="option" [routerLink]="['/task', task.id]">Edit</a> <a class="option" (click)="deleteTask(task.id)">Delete</a>
       </li>
     </ul>
   </div>
