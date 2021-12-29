@@ -2,6 +2,26 @@ const { Task } = require('../database/models')
 const { Folder } = require('../database/models')
 
 const taskController = {
+    getTask: async (req, res) => {
+        let result, task;
+        try {
+            const user = await req.user;
+            task = await Task.findByPk(req.params.id)
+            if(!task){
+                result = {success: false, msg: 'Document does not exist or you are not authorized to get it.'}
+                return res.status(401).json(result);
+            }
+            const folder = await Folder.findByPk(task.folderId);
+            if(folder.userId == user.dataValues.id){
+                task = await Task.findByPk(task.id)                
+                return res.status(200).json(task);
+            } else {
+                return res.status(401).json({success: false, msg: 'Not authorized to get'})
+            }
+        } catch (err) {            
+            return res.status(500).json(err);
+        }
+    },
     deleteTask: async (req, res) => {
         let result;
         try {

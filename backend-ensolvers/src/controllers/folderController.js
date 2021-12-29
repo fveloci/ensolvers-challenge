@@ -83,10 +83,14 @@ const folderController = {
             tasks = await Task.findAll({
                 where: {
                     folderId: folder.id
-                },
+                },                
                 attributes: {exclude: ['folderId']}               
-            })                       
-            return res.status(200).json(tasks)
+            })   
+                               
+            return res.status(200).json({
+                folder: folder.name,
+                tasks: tasks
+            })
         } catch (err) {
             result = {success: false, msg: err}
             console.log(err)
