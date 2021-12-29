@@ -1,4 +1,7 @@
 # ensolvers-challenge
+## Important!
+Before execute scripts in backend folder you need to delete .example in .env.example file. After that you must create a new database with the same name as the .env file and the same credentials. Also you need to run MYSQL virtual server like XAMPP, otherwise backend is not going to work.
+
 ## Implementation exercise
 
 For this exercise I used:
@@ -23,12 +26,15 @@ For this exercise I used:
 
 Node and Angular are necessary to run each application. And in this case I use XAMMP to run MYSQL local host database.
 
+## Login
+Default user/password are not set. I created a login and register components and each one can have their own folders and tasks.
+
 ## Angular
 
 ### Prerequisites
 - Install Node.js which includes Node Package Manager
 
-### Setting up a Project
+### Setting up Project
 - Install the Angular CLI globally:
 
 ```
@@ -64,3 +70,6 @@ npm start
 ```
 and check if application is running correctly.
 
+## Scripts
+
+###### Scripts to run each app are in their respective folders.
