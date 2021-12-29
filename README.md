@@ -20,3 +20,10 @@ For this exercise I used:
   "sequelize-cli": "^6.3.0"
 }
 ```
+
+Node and Angular are necessary to run each application. And in this case I use XAMMP to run MYSQL local host database.
+
+## Before run Node+Express Backend API use command:
+
+- Create a new database with the same name that you have in your .env file. Otherwise API is not going to connect to database and next step is not possible.
+- npx sequelize-cli db:migrate > (to create database tables with their relations)
