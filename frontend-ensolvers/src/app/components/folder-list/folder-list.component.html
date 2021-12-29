@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="title">
+    <h2>Folders</h2>
+  </div>
+  <div>
+    <ul class="folder-list">
+      <li class="folder-item" *ngFor="let folder of folders; let i = index" >
+        <p>- {{folder.name}}</p> <a class="option">View items</a> <a class="option" (click)="removeFolder(folder.id)">Remove</a>
+      </li>
+    </ul>
+  </div>
+  <div class="folder-add">
+    <form [formGroup]="addFolder">
+      <div class="form-group">
+        <input formControlName="name" type="text" placeholder="New Folder" id="name" name="name">
+      </div>
+      <button (click)="createNewFolder(addFolder.value)" [disabled]="addFolder.invalid">Add</button>
+    </form>
+  </div>
+</div>

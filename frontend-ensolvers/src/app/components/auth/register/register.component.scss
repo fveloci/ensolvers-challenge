@@ -1,0 +1,32 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+form{
+  max-width: 400px;
+  width: 100%;
+  padding: 15px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+}
+.form-group {
+  align-items: center;
+  margin: 10px 0px;
+}
+input {
+  width: 100%;
+  margin: 1px;
+  padding: 5px 15px;
+  display: block;
+  box-sizing: border-box;
+  border: none;
+}
+button {
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px 0;
+  border-color: lightgrey;
+}

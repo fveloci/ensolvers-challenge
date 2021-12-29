@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthServiceService} from "./services/auth-service.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend-ensolvers';
+  constructor(private authService: AuthServiceService) {
+  }
+
+  checkToken(){
+    const token = localStorage.getItem('token');
+    if(!token) return false;
+    return true;
+  }
+  logout() {
+    this.authService.logout();
+  }
 }

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="title">
+    <h2>Login</h2>
+  </div>
+  <form [formGroup]="loginForm">
+
+    <div class="form-group">
+      <label for="email"><b>Email</b></label>
+      <input formControlName="email" type="text" placeholder="Enter email" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label for="password"><b>Password</b></label>
+      <input formControlName="password" type="password" id="password" placeholder="Enter password" name="password">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" (click)="loginUser(this.loginForm.value)" [disabled]="loginForm.invalid">Ingresar</button>
+    </div>
+    <a [routerLink]="['/register']">Don´t have an account? Register</a>
+  </form>
+</div>

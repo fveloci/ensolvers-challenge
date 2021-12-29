@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="title">
+    <h2>Register</h2>
+  </div>
+  <form [formGroup]="registerForm">
+
+    <div class="form-group">
+      <label for="name"><b>Nombre</b></label>
+      <input formControlName="name" type="text" placeholder="Enter name" id="name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="email"><b>Email</b></label>
+      <input formControlName="email" type="text" placeholder="Enter email" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label for="password"><b>Password</b></label>
+      <input formControlName="password" type="password" id="password" placeholder="Enter password" name="password">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" (click)="registerUser(this.registerForm.value)" [disabled]="registerForm.invalid">Create</button>
+    </div>
+    <a [routerLink]="['/login']">I have an user. Login</a>
+  </form>
+</div>
