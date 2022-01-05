@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from './../../guards/jwt-auth.guard'
 import { FolderDto } from './../../dtos/folder.dto'
 import { FolderService } from './../../services/folder/folder.service'
 import {
@@ -8,17 +9,21 @@ import {
   Param,
   Post,
   Put,
-  Query
+  Query,
+  Req,
+  Request,
+  UseGuards
 } from '@nestjs/common'
-import { Folder } from 'src/interfaces/folder.class'
+import { Folder } from 'src/entities/folder.entity'
 
+@UseGuards(JwtAuthGuard)
 @Controller('folder')
 export class FolderController {
   constructor(private folderService: FolderService) {}
 
   @Get()
-  findAll(@Query() query: Request): Promise<Folder[]> {
-    return this.folderService.findAll(query)
+  findByUser(@Request() req): Promise<Folder[]> {
+    return this.folderService.findByUser(req)
   }
 
   @Get(':folderId')
@@ -27,13 +32,13 @@ export class FolderController {
   }
 
   @Post()
-  createFolder(@Body() newFolder: FolderDto): Promise<Folder> {
-    return this.folderService.createFolder(newFolder)
+  createFolder(@Request() req, @Body() newFolder: FolderDto) {
+    return this.folderService.createFolder(req, newFolder)
   }
 
   @Delete(':folderId')
-  deleteFolder(@Param('folderId') folderId: string) {
-    return this.folderService.deleteFolder(folderId)
+  deleteFolder(@Request() req, @Param('folderId') folderId: string) {
+    return this.folderService.deleteFolder(req, folderId)
   }
 
   @Put(':folderId')

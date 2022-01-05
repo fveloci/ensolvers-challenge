@@ -1,7 +1,17 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { User } from 'src/entities/user.entity'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm'
 import { Task } from './task.entity'
 
-@Entity()
+@Entity('folders')
 export class Folder {
   @PrimaryGeneratedColumn()
   id: number
@@ -9,9 +19,16 @@ export class Folder {
   @Column()
   name: string
 
-  @Column()
-  userId: number
+  @ManyToOne(() => User, (user) => user.folders, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'userId' })
+  user: User
 
-  /* @OneToMany((type) => Task, (Task) => Task.id, { cascade: true, eager: true })
-  folders: Task[] */
+  @OneToMany(() => Task, (task) => task.id, { cascade: true })
+  tasks: Task[]
+
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date
 }
