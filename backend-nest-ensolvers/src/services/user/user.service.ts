@@ -1,6 +1,7 @@
-import { UserRepository } from './../../repositories/user.repository'
-import { Injectable } from '@nestjs/common'
 import { User } from 'src/entities/user.entity'
+import { UserRepository } from './../../repositories/user.repository'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
+
 import * as bcrypt from 'bcrypt'
 
 @Injectable()
@@ -38,8 +39,8 @@ export class UserService {
       }
       return result
     } catch (err) {
-      result = { success: false, msg: err }
-      return result
+      result = { success: false, msg: String(err) }
+      throw new HttpException(result, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
   async login(body: any): Promise<any> {
@@ -50,7 +51,7 @@ export class UserService {
       })
       if (!user) {
         result = { success: false, msg: 'Email does not exist' }
-        return result
+        throw result
       }
       passwordMatches = await bcrypt.compare(body.password, user.password)
       if (passwordMatches) {
@@ -58,11 +59,10 @@ export class UserService {
         return result
       } else {
         result = { success: false, msg: 'Password is invalid' }
-        return result
+        throw result
       }
     } catch (err) {
-      result = { success: false, msg: err }
-      return result
+      throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 }
