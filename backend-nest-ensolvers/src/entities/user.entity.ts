@@ -22,7 +22,7 @@ export class User {
   @Column()
   password: string
 
-  @OneToMany(() => Folder, (folder) => folder.user)
+  @OneToMany(() => Folder, (folder) => folder.user, { cascade: true })
   folders: Folder[]
 
   @CreateDateColumn({ type: 'timestamp' })

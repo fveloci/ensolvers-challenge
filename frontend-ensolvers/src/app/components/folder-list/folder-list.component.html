@@ -8,6 +8,7 @@
         <p class="folder-name">- {{folder.name}}</p> <a class="option" [routerLink]="['/folder', folder.id]">View items</a> <a class="option" (click)="removeFolder(folder.id)">Remove</a>
       </li>
     </ul>
+    <div *ngIf="folders.length == 0"><span>Folders is empty</span></div>
   </div>
   <div class="folder-add">
     <form [formGroup]="addFolder">

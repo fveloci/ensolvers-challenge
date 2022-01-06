@@ -23,7 +23,7 @@ export class Task {
   @Column('int', { nullable: true })
   folderId: number
 
-  @ManyToOne(() => Folder, (folder) => folder.tasks)
+  @ManyToOne(() => Folder, (folder) => folder.tasks, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'folderId' })
   folder: Folder
 

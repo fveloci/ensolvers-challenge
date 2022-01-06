@@ -10,6 +10,7 @@ async function bootstrap() {
   app.setGlobalPrefix(process.env.API_URL)
   await app.listen(3000)
 
+  // NESTJS HotReload
   if (module.hot) {
     module.hot.accept()
     module.hot.dispose(() => app.close())

@@ -1,25 +1,27 @@
+import { FolderRepository } from './../../repositories/folder.repository'
 import { TaskService } from './../task/task.service'
 import { FolderDto } from './../../dtos/folder.dto'
-import { forwardRef, Inject, Injectable } from '@nestjs/common'
-import { Repository } from 'typeorm'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { Folder } from 'src/entities/folder.entity'
-import { InjectRepository } from '@nestjs/typeorm'
 
 @Injectable()
 export class FolderService {
   constructor(
-    @InjectRepository(Folder) private folderRepository: Repository<Folder>,
+    private folderRepository: FolderRepository,
     private taskService: TaskService
   ) {}
 
   async findByUser(req): Promise<Folder[]> {
     let result, folders
     try {
-      return await this.folderRepository.find({
-        where: { user: req.user.id }
+      folders = await this.folderRepository.find({
+        where: { userId: req.user.id }
       })
+
+      return folders
     } catch (err) {
-      throw err
+      result = { success: false, msg: String(err) }
+      throw new HttpException(result, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 
@@ -28,7 +30,7 @@ export class FolderService {
   }
 
   async createFolder(req, newFolder: FolderDto): Promise<any> {
-    let folder
+    let folder, result
     console.log(req.user)
     try {
       if (req.user.id) {
@@ -39,7 +41,8 @@ export class FolderService {
       }
       return folder
     } catch (err) {
-      throw err
+      result = { success: false, msg: String(err) }
+      throw new HttpException(result, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 
@@ -60,7 +63,8 @@ export class FolderService {
         return result
       }
     } catch (err) {
-      throw err
+      result = { success: false, msg: String(err) }
+      throw new HttpException(result, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 
@@ -85,7 +89,8 @@ export class FolderService {
         return result
       }
     } catch (err) {
-      throw err
+      result = { success: false, msg: String(err) }
+      throw new HttpException(result, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 
@@ -109,7 +114,7 @@ export class FolderService {
       return result
     } catch (err) {
       result = { success: false, msg: String(err) }
-      return result
+      return new HttpException(result, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 
@@ -137,7 +142,7 @@ export class FolderService {
       return result
     } catch (err) {
       result = { success: false, msg: String(err) }
-      return result
+      return new HttpException(result, HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 }
