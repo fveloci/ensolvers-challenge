@@ -5,11 +5,11 @@ Before execute scripts in backend folder you need to delete .example in .env.exa
 
 ## Implementation exercise
 
-For this exercise I used:
+For this exercise I made Angular Frontend App and two Backend Apps (Express and NestJS)
 
 ##### - Angular v12.2.10
 
-##### - Node v12.18.2 with Express v4.17.2 and this libraries:
+##### - Node v12.18.2 with Express v4.17.2 and this dependencies:
 ```json
 {
   "bcrypt": "^5.0.1",
@@ -23,6 +23,29 @@ For this exercise I used:
   "sequelize": "^7.0.0-alpha.2",
   "sequelize-cli": "^6.3.0"
 }
+```
+##### - NestJS v8.0.0 and this dependencies:
+```json
+{
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/config": "^1.1.6",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/jwt": "^8.0.0",
+    "@nestjs/passport": "^8.0.1",
+    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/typeorm": "^8.0.2",
+    "bcrypt": "^5.0.1",
+    "mysql2": "^2.3.3",
+    "nestjs-pino": "^2.4.0",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pino-http": "^6.5.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.2.0",
+    "typeorm": "^0.2.41"
+  }
 ```
 
 Node and Angular are necessary to run each application. And in this case I use XAMMP to run MYSQL local host database.
@@ -50,6 +73,25 @@ npm install
 ```
 ng serve
 ```
+
+## Nest backend server
+If you follow Angular prerequisites you don´t need to install Node.
+- Install Nest CLI
+```
+npm i -g @nestjs/cli
+```
+
+- Install libraries and packages (run this command inside backend project folder):
+```
+npm install
+```
+- Create new database with the same database name you are going to have in .env file. Otherwise API is not going to connect.
+
+- Run:
+```
+npm start
+```
+this command is going to create database tables, after that check if application is running correctly.
 
 ## Express backend server
 If you follow Angular prerequisites you don´t need to install Node.
