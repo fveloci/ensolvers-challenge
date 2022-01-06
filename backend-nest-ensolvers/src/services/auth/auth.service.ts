@@ -19,13 +19,17 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const checkedUser = await this.userService.login(user)
-    if (checkedUser.success) {
-      checkedUser.token = this.jwtService.sign({ user: checkedUser.user })
-    } else {
+    try {
+      const checkedUser = await this.userService.login(user)
+      if (checkedUser.success) {
+        checkedUser.token = this.jwtService.sign({ user: checkedUser.user })
+      } else {
+        return checkedUser
+      }
       return checkedUser
+    } catch (err) {
+      throw err
     }
-    return checkedUser
   }
 
   async register(data: any) {

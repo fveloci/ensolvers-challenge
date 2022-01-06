@@ -19,6 +19,9 @@ export class Folder {
   @Column()
   name: string
 
+  @Column('int', { nullable: true })
+  userId: number
+
   @ManyToOne(() => User, (user) => user.folders, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'userId' })
   user: User

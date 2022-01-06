@@ -1,3 +1,4 @@
+import { Task } from './../../entities/task.entity'
 import { JwtAuthGuard } from './../../guards/jwt-auth.guard'
 import { FolderDto } from './../../dtos/folder.dto'
 import { FolderService } from './../../services/folder/folder.service'
@@ -43,9 +44,27 @@ export class FolderController {
 
   @Put(':folderId')
   updateFolder(
+    @Request() req,
     @Param('folderId') folderId: string,
     @Body() newFolder: FolderDto
   ): Promise<Folder> {
-    return this.folderService.updateFolder(folderId, newFolder)
+    return this.folderService.updateFolder(req, folderId, newFolder)
+  }
+
+  @Get(':folderId/task')
+  getTasksFromFolder(
+    @Request() req,
+    @Param('folderId') folderId: string
+  ): Promise<Task[]> {
+    return this.folderService.getTasks(req, folderId)
+  }
+
+  @Post(':folderId/task')
+  createTaskFromFolder(
+    @Request() req,
+    @Param('folderId') folderId: string,
+    @Body() newTask: any
+  ): Promise<Task> {
+    return this.folderService.createTask(req, folderId, newTask)
   }
 }

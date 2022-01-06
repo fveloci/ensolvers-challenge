@@ -15,7 +15,9 @@ import { LoggerModule } from 'nestjs-pino'
 @Module({
   imports: [
     LoggerModule.forRoot(),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -24,8 +26,7 @@ import { LoggerModule } from 'nestjs-pino'
       password: '',
       database: 'todo-nest',
       entities: [Folder, User, Task],
-      synchronize: true,
-      keepConnectionAlive: true
+      synchronize: true
     }),
     FolderModule,
     TaskModule,
