@@ -9,6 +9,9 @@
         <p class="task-name">{{task.name}}</p> <a class="option" [routerLink]="['/task', task.id]">Edit</a> <a class="option" (click)="deleteTask(task.id)">Delete</a>
       </li>
     </ul>
+    <div *ngIf="tasks.length == 0">
+      <span>Tasks is empty</span>
+    </div>
   </div>
   <div class="task-add">
     <form [formGroup]="addTask">
