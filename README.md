@@ -24,7 +24,7 @@ For this exercise I made Angular Frontend App and two Backend Apps (Express and 
   "sequelize-cli": "^6.3.0"
 }
 ```
-##### - NestJS v8.0.0 and this dependencies:
+##### - NestJS v8.0.0 and TypeORM v8.0.2 with this dependencies:
 ```json
 {
     "@nestjs/common": "^8.0.0",
